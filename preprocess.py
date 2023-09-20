@@ -126,7 +126,6 @@ class MSCOCO:
 
         # Process the caption (for making same size etc.)
         captions = [self.process_caption(caption) for caption in captions]
-
         # Put back to previous format.
         return torch.stack(images), torch.stack(captions)
 

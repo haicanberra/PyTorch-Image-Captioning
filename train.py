@@ -12,6 +12,10 @@ from preprocess import MSCOCO
 from config import *
 
 if __name__ == "__main__":
+    # Lets go GPU
+    torch.backends.cudnn.benchmark = True
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
     # Initialize data and model
     mscoco = MSCOCO()
     model = CNNLSTM(
@@ -26,6 +30,10 @@ if __name__ == "__main__":
         ignore_index=mscoco.train_vocab.lookup_indices(["<PAD>"])[0]
     )
     optimizer = optim.Adam(model.parameters(), lr=LEARNING_RATE)
+
+    # Move model and criterion to GPU
+    model.to(device)
+    criterion.to(device)
 
     # Data loaders
     train_loader = mscoco.train_loader
@@ -46,6 +54,10 @@ if __name__ == "__main__":
 
         for i, (images, captions) in enumerate(train_loader):
             optimizer.zero_grad()
+
+            # Move images and captions to GPU
+            images = images.to(device)
+            captions = captions.to(device)
 
             # Forward pass
             outputs = model.forward(images, captions)
@@ -70,6 +82,10 @@ if __name__ == "__main__":
 
         with torch.no_grad():
             for i, (val_images, val_captions) in enumerate(val_loader):
+                # Move images and captions to GPU
+                val_images = val_images.to(device)
+                val_captions = val_captions.to(device)
+
                 # Forward pass
                 val_outputs = model.forward(val_images, val_captions)
 
