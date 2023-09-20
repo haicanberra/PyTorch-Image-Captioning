@@ -53,7 +53,7 @@ if __name__ == "__main__":
         total_loss = 0.0
 
         for i, (images, captions) in enumerate(train_loader):
-            optimizer.zero_grad()
+            optimizer.zero_grad(set_to_none=True)
 
             # Move images and captions to GPU
             images = images.to(device)

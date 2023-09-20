@@ -109,12 +109,14 @@ class MSCOCO:
             batch_size=self.batch_size,
             shuffle=True,
             collate_fn=self.collate_fn,
+            pin_memory=True,
         )
         self.val_loader = DataLoader(
             self.val_dataset,
             batch_size=self.batch_size,
             shuffle=False,
             collate_fn=self.collate_fn,
+            pin_memory=True,
         )
 
     def collate_fn(self, batch):
