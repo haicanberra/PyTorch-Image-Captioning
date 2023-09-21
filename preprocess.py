@@ -94,6 +94,7 @@ class MSCOCO:
         # A list contain a list contain words, for the function to work.
         # Only take 1 caption from list of captions.
         # See https://stackoverflow.com/questions/73177807/unable-to-build-vocab-for-a-torchtext-text-classification.
+        self.train_vocab = None
         if not os.path.isfile(TRAIN_VOCAB_PATH):
             self.train_vocab = build_vocab_from_iterator(
                 [self.tokenizer(caption[0]) for _, caption in self.train_dataset],

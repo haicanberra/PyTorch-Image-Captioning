@@ -23,7 +23,7 @@ MODEL_PATH = "models\\model.pth"
 TRAIN_VOCAB_PATH = "models\\train_vocab.pth"
 
 # VARIABLES
-BATCH_SIZE = 64
+BATCH_SIZE = 32
 MAX_CAPTION_LENGTH = 100
 MIN_FREQUENCY = 5
 
