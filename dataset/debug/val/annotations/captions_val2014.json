@@ -1,0 +1,74 @@
+{
+    "info": {
+        "description": "COCO 2014 Dataset",
+        "url": "http://cocodataset.org",
+        "version": "1.0",
+        "year": 2014,
+        "contributor": "COCO Consortium",
+        "date_created": "2017/09/01"
+    },
+    "images": [
+        {
+            "license": 3,
+            "file_name": "COCO_val2014_000000391895.jpg",
+            "coco_url": "http://images.cocodataset.org/val2014/COCO_val2014_000000391895.jpg",
+            "height": 360,
+            "width": 640,
+            "date_captured": "2013-11-14 11:18:45",
+            "flickr_url": "http://farm9.staticflickr.com/8186/8119368305_4e622c8349_z.jpg",
+            "id": 391895
+        },
+        {
+            "license": 4,
+            "file_name": "COCO_val2014_000000522418.jpg",
+            "coco_url": "http://images.cocodataset.org/val2014/COCO_val2014_000000522418.jpg",
+            "height": 480,
+            "width": 640,
+            "date_captured": "2013-11-14 11:38:44",
+            "flickr_url": "http://farm1.staticflickr.com/1/127244861_ab0c0381e7_z.jpg",
+            "id": 522418
+        },
+        {
+            "license": 3,
+            "file_name": "COCO_val2014_000000184613.jpg",
+            "coco_url": "http://images.cocodataset.org/val2014/COCO_val2014_000000184613.jpg",
+            "height": 336,
+            "width": 500,
+            "date_captured": "2013-11-14 12:36:29",
+            "flickr_url": "http://farm3.staticflickr.com/2169/2118578392_1193aa04a0_z.jpg",
+            "id": 184613
+        },
+        {
+            "license": 3,
+            "file_name": "COCO_val2014_000000318219.jpg",
+            "coco_url": "http://images.cocodataset.org/val2014/COCO_val2014_000000318219.jpg",
+            "height": 640,
+            "width": 556,
+            "date_captured": "2013-11-14 13:02:53",
+            "flickr_url": "http://farm5.staticflickr.com/4125/5094763076_813ea2751b_z.jpg",
+            "id": 318219
+        }
+    ],
+    "annotations": [
+        {
+            "image_id": 184613,
+            "id": 474921,
+            "caption": "A child holding a flowered umbrella and petting a yak."
+        },
+        {
+            "image_id": 522418,
+            "id": 681330,
+            "caption": "A woman wearing a net on her head cutting a cake. "
+        },
+        {
+            "image_id": 318219,
+            "id": 721981,
+            "caption": "A young boy standing in front of a computer keyboard."
+        },
+        {
+            "image_id": 391895,
+            "id": 770337,
+            "caption": "A man with a red helmet on a small moped on a dirt road. "
+        }
+    ]
+}

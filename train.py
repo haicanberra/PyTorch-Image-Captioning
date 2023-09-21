@@ -40,12 +40,16 @@ if __name__ == "__main__":
     val_loader = mscoco.val_loader
 
     # Checkpoint directory
-    checkpoint_dir = "checkpoints"
-    os.makedirs(checkpoint_dir, exist_ok=True)
+    if SAVE_CHECKPOINT:
+        checkpoint_dir = "checkpoints"
+        os.makedirs(checkpoint_dir, exist_ok=True)
 
     # Lists to store loss values for plotting
     train_losses = []
     val_losses = []
+
+    # Print to notify
+    print("Training starts...")
 
     # Training loop
     for epoch in range(NUM_EPOCHS):
@@ -105,23 +109,24 @@ if __name__ == "__main__":
         )
 
         # Save checkpoint
-        if (epoch + 1) % CHECKPOINT_INTERVAL == 0:
-            checkpoint_path = os.path.join(
-                checkpoint_dir, f"model_checkpoint_epoch{epoch+1}.pth"
-            )
-            torch.save(
-                {
-                    "epoch": epoch + 1,
-                    "model_state_dict": model.state_dict(),
-                    "optimizer_state_dict": optimizer.state_dict(),
-                    "train_loss": avg_train_loss,
-                    "val_loss": avg_val_loss,
-                },
-                checkpoint_path,
-            )
+        if SAVE_CHECKPOINT:
+            if (epoch + 1) % CHECKPOINT_INTERVAL == 0:
+                checkpoint_path = os.path.join(
+                    checkpoint_dir, f"model_checkpoint_epoch{epoch+1}.pth"
+                )
+                torch.save(
+                    {
+                        "epoch": epoch + 1,
+                        "model_state_dict": model.state_dict(),
+                        "optimizer_state_dict": optimizer.state_dict(),
+                        "train_loss": avg_train_loss,
+                        "val_loss": avg_val_loss,
+                    },
+                    checkpoint_path,
+                )
 
     # Save the final trained model
-    torch.save(model.state_dict(), "image_captioning_model.pth")
+    torch.save(model.state_dict(), "models\\model.pth")
 
     # Plot training and validation loss
     plt.plot(range(1, NUM_EPOCHS + 1), train_losses, label="Training Loss")

@@ -18,15 +18,20 @@ VAL_ANNO_PATH = "dataset\\nobug\\val\\annotations\\captions_val2014.json"
 TEST_PATH = "dataset\\nobug\\test\\test2014"
 TEST_ANNO_PATH = "dataset\\nobug\\test\\annotations"
 
+# MODEL FILES PATHS
+MODEL_PATH = "models\\model.pth"
+TRAIN_VOCAB_PATH = "models\\train_vocab.pth"
+
 # VARIABLES
 BATCH_SIZE = 64
 MAX_CAPTION_LENGTH = 100
 MIN_FREQUENCY = 5
 
 LEARNING_RATE = 0.001
-NUM_EPOCHS = 1
+NUM_EPOCHS = 10
+SAVE_CHECKPOINT = False
 CHECKPOINT_INTERVAL = 100
 
-EMBED_SIZE = 512
-HIDDEN_SIZE = 512
+EMBED_SIZE = 256
+HIDDEN_SIZE = 256
 NUM_LAYERS = 1

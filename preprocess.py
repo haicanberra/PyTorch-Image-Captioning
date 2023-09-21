@@ -103,6 +103,9 @@ class MSCOCO:
             specials=["<UNK>", "<START>", "<END>", "<PAD>"],
         )
 
+        # Save for evaluation.py
+        torch.save(self.train_vocab, "train_vocab.pth")
+
         # Dataloader for both dataset.
         self.train_loader = DataLoader(
             self.train_dataset,
