@@ -7,7 +7,7 @@ from torchtext.vocab import build_vocab_from_iterator
 
 from config import *
 import matplotlib.pyplot as plt
-import numpy as np
+import os
 
 # Data Processing: The process method loads training and
 # validation datasets using the CocoCaptions dataset class from
@@ -94,17 +94,20 @@ class MSCOCO:
         # A list contain a list contain words, for the function to work.
         # Only take 1 caption from list of captions.
         # See https://stackoverflow.com/questions/73177807/unable-to-build-vocab-for-a-torchtext-text-classification.
-        self.train_vocab = build_vocab_from_iterator(
-            [self.tokenizer(caption[0]) for _, caption in self.train_dataset],
-            specials=["<UNK>", "<START>", "<END>", "<PAD>"],
-        )
+        if not os.path.isfile(TRAIN_VOCAB_PATH):
+            self.train_vocab = build_vocab_from_iterator(
+                [self.tokenizer(caption[0]) for _, caption in self.train_dataset],
+                specials=["<UNK>", "<START>", "<END>", "<PAD>"],
+            )
+            # Save for evaluation.py
+            torch.save(self.train_vocab, TRAIN_VOCAB_PATH)
+        else:
+            torch.load(self.train_vocab, TRAIN_VOCAB_PATH)
+
         self.val_vocab = build_vocab_from_iterator(
             [self.tokenizer(caption[0]) for _, caption in self.val_dataset],
             specials=["<UNK>", "<START>", "<END>", "<PAD>"],
         )
-
-        # Save for evaluation.py
-        torch.save(self.train_vocab, "train_vocab.pth")
 
         # Dataloader for both dataset.
         self.train_loader = DataLoader(
