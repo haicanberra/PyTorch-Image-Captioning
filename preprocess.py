@@ -103,7 +103,7 @@ class MSCOCO:
             # Save for evaluation.py
             torch.save(self.train_vocab, TRAIN_VOCAB_PATH)
         else:
-            torch.load(self.train_vocab, TRAIN_VOCAB_PATH)
+            self.train_vocab = torch.load(TRAIN_VOCAB_PATH)
 
         self.val_vocab = build_vocab_from_iterator(
             [self.tokenizer(caption[0]) for _, caption in self.val_dataset],
@@ -117,6 +117,7 @@ class MSCOCO:
             shuffle=True,
             collate_fn=self.collate_fn,
             pin_memory=True,
+            num_workers=2,
         )
         self.val_loader = DataLoader(
             self.val_dataset,
@@ -124,6 +125,7 @@ class MSCOCO:
             shuffle=False,
             collate_fn=self.collate_fn,
             pin_memory=True,
+            num_workers=2,
         )
 
     def collate_fn(self, batch):
