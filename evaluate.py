@@ -32,10 +32,20 @@ model_file = torch.load(MODEL_PATH)
 model.load_state_dict(model_file)
 model.eval()
 
+# Get all images in evaluate
+images = []
+for filename in os.listdir(EVAL_PATH):
+    f = os.path.join(EVAL_PATH, filename)
+    # Checking if it is a file
+    if os.path.isfile(f):
+        test_image = Image.open(f).convert("RGB")
+        test_image = image_transform(test_image).unsqueeze(0)
+        images.append(test_image)
+
 # Load an image for testing
-image_path = "evaluate\\test.jpg"
-test_image = Image.open(image_path).convert("RGB")
-test_image = image_transform(test_image).unsqueeze(0)
+# image_path = "evaluate\\1.jpg"
+# test_image = Image.open(image_path).convert("RGB")
+# test_image = image_transform(test_image).unsqueeze(0)
 
 
 def decode_caption(indices):
@@ -48,10 +58,10 @@ def decode_caption(indices):
 
 # Generate a caption for the test image
 with torch.no_grad():
-    caption_indices = model.caption(
-        test_image, train_vocab, max_caption_length=MAX_CAPTION_LENGTH
-    )
-    generated_caption = decode_caption(caption_indices)
-
-# Print the generated caption
-print("Generated Caption:", generated_caption)
+    for ti in images:
+        caption_indices = model.caption(
+            ti, train_vocab, max_caption_length=MAX_CAPTION_LENGTH
+        )
+        generated_caption = decode_caption(caption_indices)
+        # Print the generated caption
+        print("Generated Caption:", generated_caption)

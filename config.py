@@ -18,6 +18,8 @@ VAL_ANNO_PATH = "dataset\\nobug\\val\\annotations\\captions_val2014.json"
 TEST_PATH = "dataset\\nobug\\test\\test2014"
 TEST_ANNO_PATH = "dataset\\nobug\\test\\annotations"
 
+EVAL_PATH = "evaluate"
+
 # MODEL FILES PATHS
 MODEL_PATH = "models\\model.pth"
 TRAIN_VOCAB_PATH = "models\\train_vocab.pth"
