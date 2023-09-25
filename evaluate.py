@@ -34,7 +34,9 @@ model.eval()
 
 # Get all images in evaluate
 images = []
+file_names = []
 for filename in os.listdir(EVAL_PATH):
+    file_names.append(filename)
     f = os.path.join(EVAL_PATH, filename)
     # Checking if it is a file
     if os.path.isfile(f):
@@ -57,11 +59,14 @@ def decode_caption(indices):
 
 
 # Generate a caption for the test image
-with torch.no_grad():
-    for ti in images:
-        caption_indices = model.caption(
-            ti, train_vocab, max_caption_length=MAX_CAPTION_LENGTH
-        )
-        generated_caption = decode_caption(caption_indices)
-        # Print the generated caption
-        print("Generated Caption:", generated_caption)
+counter = 0
+with open('output.txt', 'w') as f:
+    with torch.no_grad():
+        for ti in images:
+            caption_indices = model.caption(
+                ti, train_vocab, max_caption_length=MAX_CAPTION_LENGTH
+            )
+            generated_caption = decode_caption(caption_indices)
+            # Print the generated caption
+            f.write(file_names[counter] + generated_caption + '\n')
+            counter = counter + 1
