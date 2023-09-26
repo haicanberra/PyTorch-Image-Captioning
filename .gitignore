@@ -1,8 +1,6 @@
 venv/
-dataset/nobug
-dataset/zip
 __pycache__/
 .vscode
 checkpoints/
 models/model.pth
-evaluate/
+dataset/nobug/val/captions_val2014.json

@@ -4,6 +4,7 @@ from model import CNNLSTM
 from config import *
 from PIL import Image
 import os
+from compare import compare
 
 # Assertion
 assert os.path.isfile(TRAIN_VOCAB_PATH)
@@ -36,13 +37,14 @@ model.eval()
 images = []
 file_names = []
 for filename in os.listdir(EVAL_PATH):
-    file_names.append(filename)
-    f = os.path.join(EVAL_PATH, filename)
-    # Checking if it is a file
-    if os.path.isfile(f):
-        test_image = Image.open(f).convert("RGB")
-        test_image = image_transform(test_image).unsqueeze(0)
-        images.append(test_image)
+    if (filename != '.gitkeep'):
+        file_names.append(filename)
+        f = os.path.join(EVAL_PATH, filename)
+        # Checking if it is a file
+        if os.path.isfile(f):
+            test_image = Image.open(f).convert("RGB")
+            test_image = image_transform(test_image).unsqueeze(0)
+            images.append(test_image)
 
 # Load an image for testing
 # image_path = "evaluate\\1.jpg"
@@ -60,7 +62,7 @@ def decode_caption(indices):
 
 # Generate a caption for the test image
 counter = 0
-with open('output.txt', 'w') as f:
+with open('output\\output.txt', 'w') as f:
     with torch.no_grad():
         for ti in images:
             caption_indices = model.caption(
@@ -68,5 +70,7 @@ with open('output.txt', 'w') as f:
             )
             generated_caption = decode_caption(caption_indices)
             # Print the generated caption
-            f.write(file_names[counter] + generated_caption + '\n')
+            f.write(file_names[counter] + ',' + generated_caption + '\n')
             counter = counter + 1
+
+compare()

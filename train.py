@@ -135,5 +135,5 @@ if __name__ == "__main__":
     plt.ylabel("Loss")
     plt.legend()
     plt.title("Training and Validation Loss Over Epochs")
-    plt.savefig("training_val_loss_plot.png")  # Save the plot as an image
+    plt.savefig("output\\train_val_loss_plot.png")  # Save the plot as an image
     plt.show()  # Show the plot

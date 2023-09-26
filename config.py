@@ -15,9 +15,6 @@ TRAIN_ANNO_PATH = "dataset\\nobug\\train\\annotations\\captions_train2014.json"
 VAL_PATH = "dataset\\nobug\\val\\val2014"
 VAL_ANNO_PATH = "dataset\\nobug\\val\\annotations\\captions_val2014.json"
 
-TEST_PATH = "dataset\\nobug\\test\\test2014"
-TEST_ANNO_PATH = "dataset\\nobug\\test\\annotations"
-
 EVAL_PATH = "evaluate"
 
 # MODEL FILES PATHS
