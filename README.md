@@ -42,11 +42,12 @@ PyTorch Image Captioning - Automatic image description generation using deep lea
 
 ## Specifications
 ### <ins>Model</ins>
-- The encoder-decoder framework used is illustrated below.
+- The encoder-decoder framework used is illustrated below with insight on an LSTM unit.
 - The encoder is a pretrained Convolutional Neural Network known as InceptionV3, also called as GoogleNetV3, trained on Imagenet.
 - The decoder is a Long Short-term Memory Network with 1 recurrent layer taking the output of the encoder as input.  
 <div align="center">
 <img src="./assets/model.png">
+<img src="./assets/lstm.png">
 </div>
 
 ### <ins>Train</ins>
