@@ -24,7 +24,7 @@
 PyTorch Image Captioning - Automatic image description generation using deep learning.  
 - Developed and trained a PyTorch image captioning model utilizing Inceptionv3 as a CNN backbone and a LSTM network for sequence generation.
 - Improved data loading speed by 70% through hyperparameter optimization and GPU utilized preprocessing.
-- Achieved a METEOR Score of 0.245 and a BLEU Score of 0.022 on a test set of 1000 random images.
+- Achieved an average METEOR Score of 0.245 and an average BLEU Score of 0.022 on a test set of 1000 random images.
 <a name="packages"></a>
 
 ## Packages
