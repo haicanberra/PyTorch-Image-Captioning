@@ -54,9 +54,9 @@ PyTorch Image Captioning - Automatic image description generation using deep lea
 - Build and run Dockerfile in ```/src/run```:
     ```
     docker build -t caption ./src/run
-    docker run -v /$PWD/src/run/image:/app/image caption
+    docker run -v $PWD/src/run/image:/app/image caption
     ```  
-
+- Using Git Bash might need a "/" before $PWD.
 ---
 <a name="notes"></a>
 
