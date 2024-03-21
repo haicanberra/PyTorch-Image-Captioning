@@ -26,9 +26,3 @@ for i in range(len(name)):
     dictionary[name[i]] = [annotations[i]]
 with open('output\\data.json', 'w') as f:
     json.dump(dictionary, f)
-
-# src_dir = r"C:\Users\hoang\Files\VSCODE\PyTorch-Image-Captioning\dataset\nobug\val\val2014"
-# dst_dir = r"C:\Users\hoang\Files\images"
-
-# for imageName in name:
-#      shutil.copy(os.path.join(src_dir, imageName), dst_dir)

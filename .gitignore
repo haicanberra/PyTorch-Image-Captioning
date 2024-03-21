@@ -2,5 +2,5 @@ venv/
 __pycache__/
 .vscode
 checkpoints/
-models/model.pth
+model/model.pth
 dataset/nobug/val/captions_val2014.json

@@ -2,9 +2,6 @@ import os
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from torch.utils.data import DataLoader
-from torchvision import transforms
-from torchvision.datasets import CocoCaptions
 import matplotlib.pyplot as plt
 
 from model import CNNLSTM
@@ -126,7 +123,7 @@ if __name__ == "__main__":
                 )
 
     # Save the final trained model
-    torch.save(model.state_dict(), "models\\model.pth")
+    torch.save(model.state_dict(), "model\\model.pth")
 
     # Plot training and validation loss
     plt.plot(range(1, NUM_EPOCHS + 1), train_losses, label="Training Loss")

@@ -1,46 +1,31 @@
 <div align="center">
 
-<img src="./thumbnail.png" width="300">
+<img src="./assets/thumbnail.png" width="300">
 
 # Pytorch Image Captioning
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
-![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white)
-![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white)
-![Matplotlib](https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-the-badge&logo=Matplotlib&logoColor=black)
+---
 </div> 
 
 ## Contents
 * [About](#about)
-* [Packages](#packages)
-* [References](#references)
 * [Specifications](#specifications)
-* [Installation](#installation)
 * [Usages](#usages)
 * [Notes](#notes)
-
+* [References](#references)
+---
 <a name="about"></a>
 
 ## About
+
 PyTorch Image Captioning - Automatic image description generation using deep learning.  
 - Developed and trained a PyTorch image captioning model utilizing Inceptionv3 as a CNN backbone and a LSTM network for sequence generation.
 - Improved data loading speed by 70% through hyperparameter optimization and GPU utilized preprocessing.
 - Achieved an average METEOR Score of 0.245 and an average BLEU Score of 0.022 on a test set of 1000 random images.
-<a name="packages"></a>
-
-## Packages
-- PyTorch.
-- Natural Language Toolkit (NLTK).
-- Numpy.
-- Matplotlib.
-
-<a name="references"></a>
-
-## References
-- Common Objects in Context Dataset by [Microsoft](https://cocodataset.org). 
-
+---
 <a name="specifications"></a>
 
 ## Specifications
+
 ### <ins>Model</ins>
 - The encoder-decoder framework used is illustrated below with insight on an LSTM unit.
 - The encoder is a pretrained Convolutional Neural Network known as InceptionV3, also called as GoogleNetV3, trained on Imagenet.
@@ -60,24 +45,19 @@ PyTorch Image Captioning - Automatic image description generation using deep lea
 ### <ins>Test</ins>
 - Model is tested on 1000 randomly sampled images from MS COCO's Test Dataset.
 - The result is then evaluated by using METEOR and BLEU score which the higher score, the better the quality of the caption.
-
-<a name="installation"></a>
-
-## Installation
-```
-python3 -m venv env
-source env/Scripts/activate
-pip install -r requirements.txt
-```  
+---
 
 <a name="usages"></a>
 
 ## Usages
-- Download model.pth from [Releases](https://github.com/haicanberra/PyTorch-Image-Captioning/releases/tag/v1.0.0) and clone the repository.
-- Place model.pth into ```models``` folder.
-- Place images that need to be captioned into ```evaluate``` folder.
-- Run ```evaluate.py```, the output captions will be written in ```output\output.txt```.
+- Place images that need to be captioned into ```image``` folder.
+- Build and run Dockerfile in ```/src/run```:
+    ```
+    docker build -t caption ./src/run
+    docker run -v /$PWD/src/run/image:/app/image caption
+    ```  
 
+---
 <a name="notes"></a>
 
 ## Notes
@@ -90,38 +70,47 @@ pip install -r requirements.txt
 </div>
 
 - Data folder structure used:
-```
- C:.
- ├───debug
- │   ├───train
- │   │   ├───annotations
- │   │   └───train2014
- │   └───val
- │       ├───annotations
- │       └───val2014
- ├───nobug
- │   ├───train
- │   │   ├───annotations.json
- │   │   └───train2014
- │   └───val
- │       ├───annotations.json
- │       └───val2014
- ```
+    ```
+    folder
+    ├───debug
+    │   ├───train
+    │   │   ├───annotations
+    │   │   └───train2014
+    │   └───val
+    │       ├───annotations
+    │       └───val2014
+    ├───nobug
+    │   ├───train
+    │   │   ├───annotations.json
+    │   │   └───train2014
+    │   └───val
+    │       ├───annotations.json
+    │       └───val2014
+    Note: Merge run and train if modifying again.
+    ```
 - Trained for 10 epochs which took 72 hours on laptop's NVIDIA 1660Ti Max-Q:
-```
-Epoch [1/10] - Train Loss: 3.0864389271730617 - Validation Loss: 2.6335544072056267
-Epoch [2/10] - Train Loss: 2.447707887224862 - Validation Loss: 2.4546404053437954
-Epoch [3/10] - Train Loss: 2.2442663139388235 - Validation Loss: 2.401020363232159
-Epoch [4/10] - Train Loss: 2.114552161248439 - Validation Loss: 2.3909789499889995
-Epoch [5/10] - Train Loss: 2.0163803068329846 - Validation Loss: 2.3994741667691755
-Epoch [6/10] - Train Loss: 1.9356619593347875 - Validation Loss: 2.4147298296480946
-Epoch [7/10] - Train Loss: 1.8686698923988327 - Validation Loss: 2.434351029365925
-Epoch [8/10] - Train Loss: 1.8108929144538966 - Validation Loss: 2.455642291814042
-Epoch [9/10] - Train Loss: 1.7593759432417755 - Validation Loss: 2.483545883948581
-Epoch [10/10] - Train Loss: 1.7146276916644727 - Validation Loss: 2.5100175576375747
-```
+    ```
+    Epoch [1/10] - Train Loss: 3.0864389271730617 - Validation Loss: 2.6335544072056267
+    Epoch [2/10] - Train Loss: 2.447707887224862 - Validation Loss: 2.4546404053437954
+    Epoch [3/10] - Train Loss: 2.2442663139388235 - Validation Loss: 2.401020363232159
+    Epoch [4/10] - Train Loss: 2.114552161248439 - Validation Loss: 2.3909789499889995
+    Epoch [5/10] - Train Loss: 2.0163803068329846 - Validation Loss: 2.3994741667691755
+    Epoch [6/10] - Train Loss: 1.9356619593347875 - Validation Loss: 2.4147298296480946
+    Epoch [7/10] - Train Loss: 1.8686698923988327 - Validation Loss: 2.434351029365925
+    Epoch [8/10] - Train Loss: 1.8108929144538966 - Validation Loss: 2.455642291814042
+    Epoch [9/10] - Train Loss: 1.7593759432417755 - Validation Loss: 2.483545883948581
+    Epoch [10/10] - Train Loss: 1.7146276916644727 - Validation Loss: 2.5100175576375747
+    ```
 - Final plots, train_val_loss_plot indicates training should be stopped after 4th/5th epoch to prevent overfitting. The scores of 1000 randomly sampled test images are also plotted below.
 <div align="center">
-<img src="./output/train_val_loss_plot.png" width=33.3%>
-<img src="./output/score_plot.png" width=60%>
+<img src="./assets/train_val_loss_plot.png" width=33.3%>
+<img src="./assets/score_plot.png" width=60%>
 </div>
+
+---
+<a name="references"></a>
+
+## References
+- [Show and tell: A neural image caption generator](https://doi.org/10.48550/arXiv.1411.4555) by Vinyals, O., Toshev, A., Bengio, S., & Erhan, D.  
+- [Common Objects in Context Dataset](https://cocodataset.org) by Microsoft.
+

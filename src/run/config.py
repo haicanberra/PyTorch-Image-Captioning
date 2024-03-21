@@ -15,11 +15,12 @@ TRAIN_ANNO_PATH = "dataset\\nobug\\train\\annotations\\captions_train2014.json"
 VAL_PATH = "dataset\\nobug\\val\\val2014"
 VAL_ANNO_PATH = "dataset\\nobug\\val\\annotations\\captions_val2014.json"
 
-EVAL_PATH = "evaluate"
+OUTPUT_PATH = "output/output.txt"
+IMG_PATH = "image"
 
-# MODEL FILES PATHS
-MODEL_PATH = "models\\model.pth"
-TRAIN_VOCAB_PATH = "models\\train_vocab.pth"
+# MODEL FILES PATHS, CHANGE TO \\ IF NOT DOCKER
+MODEL_PATH = "model/model.pth"
+TRAIN_VOCAB_PATH = "model/train_vocab.pth"
 
 # VARIABLES
 BATCH_SIZE = 32

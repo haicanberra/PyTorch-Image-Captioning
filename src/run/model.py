@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 import torchvision.models as models
+import os
 
 # CNN (Convolutional Neural Network): a CNN model based on the
 # Inception V3 architecture. The last fully connected layer of
@@ -20,7 +21,6 @@ import torchvision.models as models
 # image features using the CNN model, and generates captions
 # using the LSTM model.
 
-
 # Input: [1, channels, height, width] or [1, 3, 299, 299].
 class CNN(nn.Module):
     def __init__(self, embed_size, train_CNN=False):
@@ -31,11 +31,11 @@ class CNN(nn.Module):
 
         # Using inception_v3.
         # Get last layer according to
-        # https://pytorch.org/vision/master/_modules/torchvision/models/inception.html#inception_v3.
+        # https://pytorch.org/vision/master/_modules/torchvision/modelinception.html#inception_v3.
         # No idea why setting it false when not initializing works.
         self.inception = models.inception_v3(
             weights=models.Inception_V3_Weights.DEFAULT, aux_logits=True
-        )
+            )
         self.inception.aux_logits = False
 
         # Replace with a linear layer, map dimension to embed_size.
