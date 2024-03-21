@@ -13,4 +13,4 @@ RUN curl -L https://github.com/haicanberra/PyTorch-Image-Captioning/releases/dow
 VOLUME ["image"]
 
 # Entrypoint (command to run)
-ENTRYPOINT ["python", "caption.py"]  # Rename evaluate.py to main.py
+ENTRYPOINT ["python", "caption.py"]
